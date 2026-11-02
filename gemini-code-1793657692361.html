@@ -1,0 +1,1534 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>شاورما العربي | SHAWARMA AL-ARABY</title>
+    
+    <!-- أيقونة الموقع (Favicon) فوق بالرابط مطابقة للوغو الأحمر -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><circle cx='100' cy='100' r='98' fill='%23E52D27'/><circle cx='100' cy='32' r='6' fill='none' stroke='%23ffffff' stroke-width='3.5'/><line x1='100' y1='38' x2='100' y2='48' stroke='%23ffffff' stroke-width='3.5'/><path d='M75 52 Q100 42 125 52 L120 62 Q100 54 80 62 Z' fill='%23ffffff'/><text x='100' y='88' font-family='Cairo, sans-serif' font-size='30' font-weight='900' fill='%23ffffff' text-anchor='middle'>شاورما</text><text x='100' y='116' font-family='Cairo, sans-serif' font-size='26' font-weight='900' fill='%23ffffff' text-anchor='middle'>العربي</text><path d='M90 122 L110 122 L100 132 Z' fill='%23ffffff'/><line x1='100' y1='132' x2='100' y2='144' stroke='%23ffffff' stroke-width='3.5'/></svg>">
+
+    <!-- خطوط Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@700&family=Cairo:wght@400;600;700;800;900&family=Marhey:wght@700&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    
+    <!-- أيقونات FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-red: #E52D27;
+            --primary-red-dark: #c41e18;
+            --dark-maroon: #6B1D21;
+            --dark-black: #1A1A1A;
+            --card-bg: rgba(255, 255, 255, 0.92);
+            --text-gray: #555555;
+            --shadow-soft: 0 8px 25px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 12px 30px rgba(229, 45, 39, 0.18);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Cairo', 'Tajawal', sans-serif;
+            color: var(--dark-black);
+            background-color: #fcfaf7;
+            background-image: url('bg.jpg'), url("data:image/svg+xml,%3Csvg width='160' height='160' viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23e2dcd3' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round' opacity='0.75'%3E%3Cpath d='M25,45 C25,30 65,30 65,45 Z'/%3E%3Cpath d='M22,50 L68,50'/%3E%3Cpath d='M25,55 C25,65 65,65 65,55 Z'/%3E%3Cpath d='M105,35 L135,25 L125,60 Z'/%3E%3Ccircle cx='120' cy='40' r='3'/%3E%3Cpath d='M35,110 L60,110 L55,145 L40,145 Z'/%3E%3Cpath d='M40,110 L38,92 M47,110 L47,88 M54,110 L56,94'/%3E%3Cpath d='M105,115 C115,100 135,100 145,115 C135,130 115,130 105,115 Z'/%3E%3Cpolygon points='85,75 88,82 95,82 90,87 92,94 85,90 78,94 80,87 75,82 82,82'/%3E%3C/g%3E%3C/svg%3E");
+            background-attachment: fixed;
+            background-size: cover, 220px 220px;
+            background-position: center;
+            min-height: 100vh;
+            padding-bottom: 100px;
+        }
+
+        /* الهيدر الرئيسي */
+        header {
+            background: linear-gradient(135deg, var(--primary-red) 0%, #b81914 100%);
+            color: #fff;
+            padding: 25px 20px 30px;
+            position: relative;
+            border-bottom: 5px solid var(--dark-maroon);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -20%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .header-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .brand-section {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex: 1;
+            min-width: 280px;
+        }
+
+        /* اللوغو الدائري الأحمر */
+        .logo-wrapper {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: var(--primary-red);
+            padding: 4px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35), 0 0 0 4px rgba(255, 255, 255, 0.95);
+            flex-shrink: 0;
+            position: relative;
+            transition: transform 0.3s ease;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-wrapper:hover {
+            transform: scale(1.05) rotate(-3deg);
+        }
+
+        .logo-wrapper img,
+        .logo-wrapper svg {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            display: block;
+        }
+
+        .brand-text h1 {
+            font-family: 'Aref Ruqaa', 'Marhey', serif;
+            font-size: 2.5rem;
+            line-height: 1.2;
+            margin-bottom: 4px;
+            text-shadow: -3px 3px 0px var(--dark-black);
+        }
+
+        .brand-text .en-name {
+            font-family: 'Cairo', sans-serif;
+            font-size: 0.9rem;
+            letter-spacing: 3px;
+            font-weight: 800;
+            opacity: 0.95;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .brand-text .slogan {
+            font-size: 1.05rem;
+            font-weight: 700;
+            background: rgba(0, 0, 0, 0.22);
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+        }
+
+        /* بطاقات معلومات المطعم في الهيدر */
+        .info-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            max-width: 500px;
+        }
+
+        .info-pill {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(6px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            color: #fff;
+            text-decoration: none;
+            padding: 8px 14px;
+            border-radius: 12px;
+            font-size: 0.88rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: 0.25s;
+        }
+
+        .info-pill:hover {
+            background: #fff;
+            color: var(--primary-red);
+            transform: translateY(-2px);
+        }
+
+        .info-pill i {
+            font-size: 1.05rem;
+        }
+
+        /* شريط الأقسام والبحث التفاعلي الثابت (Sticky Bar) */
+        .sticky-nav-wrapper {
+            position: sticky;
+            top: 0;
+            z-index: 900;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 3px solid var(--primary-red);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+            padding: 12px 0;
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        /* شريط البحث الفوري */
+        .search-box {
+            position: relative;
+            width: 100%;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 12px 45px 12px 40px;
+            border-radius: 30px;
+            border: 2px solid #e4e4e4;
+            background: #f9f9f9;
+            font-family: 'Cairo', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--dark-black);
+            transition: all 0.25s ease;
+            outline: none;
+        }
+
+        .search-box input:focus {
+            border-color: var(--primary-red);
+            background: #fff;
+            box-shadow: 0 0 0 4px rgba(229, 45, 39, 0.12);
+        }
+
+        .search-box .search-icon {
+            position: absolute;
+            right: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary-red);
+            font-size: 1.1rem;
+        }
+
+        .search-box .clear-search {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #999;
+            cursor: pointer;
+            font-size: 1rem;
+            display: none;
+        }
+
+        /* قائمة الأقسام الأفقية بأيقونات دائرية حمراء */
+        .categories-bar {
+            display: flex;
+            gap: 12px;
+            overflow-x: auto;
+            padding: 4px 2px 8px;
+            scrollbar-width: none;
+        }
+
+        .categories-bar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .cat-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: #fff;
+            border: 2px solid #eee;
+            border-radius: 40px;
+            padding: 5px 14px 5px 6px;
+            cursor: pointer;
+            white-space: nowrap;
+            text-decoration: none;
+            color: var(--dark-black);
+            font-weight: 800;
+            font-size: 0.9rem;
+            transition: all 0.25s ease;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+        }
+
+        .cat-item .cat-icon {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background: var(--primary-red);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.95rem;
+            flex-shrink: 0;
+            box-shadow: 0 2px 6px rgba(229, 45, 39, 0.35);
+            transition: 0.25s;
+        }
+
+        .cat-item:hover,
+        .cat-item.active {
+            background: var(--primary-red);
+            color: #fff;
+            border-color: var(--primary-red);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(229, 45, 39, 0.3);
+        }
+
+        .cat-item:hover .cat-icon,
+        .cat-item.active .cat-icon {
+            background: #fff;
+            color: var(--primary-red);
+        }
+
+        /* حاوية المنيو الرئيسية */
+        .menu-container {
+            max-width: 1100px;
+            margin: 25px auto;
+            padding: 0 15px;
+        }
+
+        .menu-section {
+            margin-bottom: 45px;
+            scroll-margin-top: 155px;
+        }
+
+        /* تصميم عناوين الأقسام المطابق للمنيو الورقي 100% */
+        .section-header-wrapper {
+            text-align: center;
+            margin-bottom: 25px;
+            padding: 0 10px;
+        }
+
+        .section-banner {
+            display: inline-block;
+            background-color: var(--dark-maroon);
+            color: #ffffff;
+            padding: 10px 42px;
+            transform: skewX(-12deg);
+            box-shadow: -5px 5px 0px #000000;
+            border: 2px solid #ffffff;
+            min-width: 240px;
+            position: relative;
+        }
+
+        .section-banner h2 {
+            transform: skewX(12deg);
+            font-family: 'Cairo', 'Aref Ruqaa', sans-serif;
+            font-weight: 900;
+            font-size: 1.55rem;
+            letter-spacing: 0.5px;
+            margin: 0;
+            text-shadow: -2px 2px 0px #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        /* شبكة بطاقات الوجبات */
+        .meals-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(295px, 1fr));
+            gap: 18px;
+        }
+
+        .meal-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(5px);
+            border-radius: 16px;
+            padding: 18px;
+            border: 2px solid rgba(107, 29, 33, 0.12);
+            box-shadow: var(--shadow-soft);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 14px;
+            transition: all 0.25s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .meal-card::before {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 0;
+            height: 100%;
+            width: 5px;
+            background: var(--primary-red);
+            opacity: 0.85;
+        }
+
+        .meal-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--primary-red);
+        }
+
+        .meal-card.in-cart {
+            border-color: var(--primary-red);
+            background: rgba(255, 248, 248, 0.96);
+        }
+
+        .meal-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .meal-title {
+            font-size: 1.15rem;
+            font-weight: 900;
+            color: var(--dark-black);
+            margin-bottom: 4px;
+        }
+
+        .meal-desc {
+            font-family: 'Tajawal', sans-serif;
+            font-size: 0.86rem;
+            font-weight: 600;
+            color: var(--text-gray);
+            line-height: 1.4;
+        }
+
+        .meal-icon-badge {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: rgba(229, 45, 39, 0.09);
+            color: var(--primary-red);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+
+        .meal-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 10px;
+            border-top: 1px dashed rgba(0, 0, 0, 0.1);
+        }
+
+        .meal-price {
+            font-family: 'Tajawal', 'Cairo', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 900;
+            color: var(--primary-red);
+        }
+
+        .meal-price span {
+            font-size: 0.85rem;
+            color: var(--dark-black);
+            font-weight: 800;
+        }
+
+        /* أزرار التحكم بالكمية (+ و -) */
+        .qty-controls {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: #f3f3f3;
+            padding: 4px;
+            border-radius: 30px;
+            border: 1px solid #e0e0e0;
+        }
+
+        .qty-btn {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 900;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.2s;
+        }
+
+        .qty-btn.plus {
+            background: var(--primary-red);
+            color: #fff;
+            box-shadow: 0 3px 8px rgba(229, 45, 39, 0.3);
+        }
+
+        .qty-btn.plus:hover {
+            background: var(--primary-red-dark);
+            transform: scale(1.07);
+        }
+
+        .qty-btn.minus {
+            background: #fff;
+            color: var(--dark-black);
+            border: 1px solid #ddd;
+        }
+
+        .qty-btn.minus:hover:not(:disabled) {
+            background: var(--dark-black);
+            color: #fff;
+        }
+
+        .qty-btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        .qty-number {
+            min-width: 24px;
+            text-align: center;
+            font-weight: 900;
+            font-size: 1.05rem;
+            color: var(--dark-black);
+        }
+
+        /* رسالة عدم وجود نتائج بحث */
+        .no-results {
+            display: none;
+            text-align: center;
+            background: var(--card-bg);
+            padding: 40px 20px;
+            border-radius: 16px;
+            border: 2px dashed var(--primary-red);
+            margin: 20px 0;
+        }
+
+        /* سلة المشتريات العائمة (Floating Cart) */
+        .floating-cart {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%) translateY(150%);
+            width: calc(100% - 30px);
+            max-width: 550px;
+            background: var(--primary-red);
+            color: #fff;
+            padding: 14px 22px;
+            border-radius: 50px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35), 0 0 0 3px #fff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            z-index: 950;
+            transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .floating-cart.visible {
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .floating-cart:hover {
+            background: var(--primary-red-dark);
+        }
+
+        .cart-info-right {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .cart-count-badge {
+            background: #fff;
+            color: var(--primary-red);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 1.05rem;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+        }
+
+        .cart-label {
+            font-weight: 800;
+            font-size: 1.05rem;
+        }
+
+        .cart-total-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 900;
+            font-size: 1.15rem;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 6px 16px;
+            border-radius: 30px;
+        }
+
+        /* نافذة السلة المنبثقة (Modal) */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.65);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+        }
+
+        .modal-overlay.open {
+            display: flex;
+            animation: fadeIn 0.25s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .cart-modal {
+            background: #fff;
+            width: 100%;
+            max-width: 560px;
+            max-height: 90vh;
+            border-radius: 22px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+            border: 3px solid var(--dark-maroon);
+        }
+
+        .modal-header {
+            background: var(--primary-red);
+            color: #fff;
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 3px solid var(--dark-maroon);
+        }
+
+        .modal-header h3 {
+            font-size: 1.25rem;
+            font-weight: 900;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .close-modal-btn {
+            background: rgba(0,0,0,0.2);
+            color: #fff;
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.2s;
+        }
+
+        .close-modal-btn:hover {
+            background: var(--dark-black);
+        }
+
+        .modal-body {
+            padding: 20px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* قائمة الوجبات المختارة داخل السلة */
+        .cart-items-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-height: 220px;
+            overflow-y: auto;
+            padding-left: 5px;
+        }
+
+        .cart-item-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #f9f9f9;
+            padding: 10px 14px;
+            border-radius: 12px;
+            border: 1px solid #eee;
+            gap: 10px;
+        }
+
+        .cart-item-info {
+            flex: 1;
+        }
+
+        .cart-item-title {
+            font-weight: 800;
+            font-size: 0.95rem;
+        }
+
+        .cart-item-subtotal {
+            color: var(--primary-red);
+            font-weight: 800;
+            font-size: 0.88rem;
+        }
+
+        /* اختيار نوع الطلب (توصيل / استلام) */
+        .order-type-selector {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .type-option {
+            border: 2px solid #e0e0e0;
+            border-radius: 14px;
+            padding: 12px 10px;
+            text-align: center;
+            cursor: pointer;
+            font-weight: 800;
+            font-size: 0.95rem;
+            transition: 0.2s;
+            background: #fafafa;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .type-option span.emoji {
+            font-size: 1.4rem;
+        }
+
+        .type-option.active {
+            border-color: var(--primary-red);
+            background: rgba(229, 45, 39, 0.08);
+            color: var(--primary-red);
+            box-shadow: 0 4px 12px rgba(229, 45, 39, 0.15);
+        }
+
+        /* نموذج معلومات الزبون */
+        .checkout-form {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .form-group label {
+            font-size: 0.88rem;
+            font-weight: 800;
+            color: var(--dark-black);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            padding: 11px 14px;
+            border-radius: 10px;
+            border: 1.5px solid #ddd;
+            font-family: 'Cairo', sans-serif;
+            font-size: 0.92rem;
+            font-weight: 600;
+            outline: none;
+            transition: 0.2s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--primary-red);
+            box-shadow: 0 0 0 3px rgba(229, 45, 39, 0.1);
+        }
+
+        /* ملخص الحساب النهائي */
+        .bill-summary {
+            background: #fdf6f6;
+            border: 2px dashed var(--dark-maroon);
+            padding: 14px 18px;
+            border-radius: 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .bill-row {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 700;
+            font-size: 0.95rem;
+        }
+
+        .bill-row.total {
+            font-size: 1.2rem;
+            font-weight: 900;
+            color: var(--primary-red);
+            border-top: 1px solid rgba(0,0,0,0.1);
+            padding-top: 8px;
+        }
+
+        .whatsapp-submit-btn {
+            background: #25D366;
+            color: #fff;
+            border: none;
+            padding: 14px;
+            border-radius: 14px;
+            font-family: 'Cairo', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 900;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.35);
+            transition: 0.25s;
+        }
+
+        .whatsapp-submit-btn:hover {
+            background: #1ebe57;
+            transform: translateY(-2px);
+        }
+
+        .clear-cart-btn {
+            background: none;
+            border: none;
+            color: #888;
+            font-family: 'Cairo', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: underline;
+            align-self: center;
+        }
+
+        /* الفوتر */
+        footer {
+            background: var(--primary-red);
+            color: #fff;
+            padding: 35px 20px 110px;
+            text-align: center;
+            border-top: 5px solid var(--dark-maroon);
+            margin-top: 50px;
+        }
+
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 15px;
+            margin-top: 8px;
+        }
+
+        .social-btn {
+            background: #fff;
+            color: var(--primary-red);
+            padding: 8px 18px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            transition: 0.2s;
+        }
+
+        .social-btn:hover {
+            background: var(--dark-black);
+            color: #fff;
+        }
+
+        /* التجاوب مع الشاشات الصغيرة (الموبايل) */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            .brand-section {
+                flex-direction: column;
+            }
+            .brand-text h1 {
+                font-size: 2.1rem;
+            }
+            .info-pills {
+                justify-content: center;
+            }
+            .section-banner {
+                padding: 8px 28px;
+                min-width: 210px;
+            }
+            .section-banner h2 {
+                font-size: 1.3rem;
+            }
+            .meals-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- الهيدر الرئيسي -->
+    <header>
+        <div class="header-container">
+            <div class="brand-section">
+                <!-- اللوغو الدائري الأحمر -->
+                <div class="logo-wrapper">
+                    <img src="logo.png" alt="شاورما العربي" onerror="this.style.display='none'; document.getElementById('fallbackLogoSvg').style.display='block';">
+                    <svg id="fallbackLogoSvg" style="display:none;" viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="120" cy="120" r="118" fill="#E52D27"/>
+                        <circle cx="120" cy="36" r="7" fill="none" stroke="#ffffff" stroke-width="3.5"/>
+                        <line x1="120" y1="43" x2="120" y2="54" stroke="#ffffff" stroke-width="3.5"/>
+                        <path d="M90 62 Q120 46 150 62 L144 74 Q120 60 96 74 Z" fill="#ffffff"/>
+                        <text x="120" y="102" font-family="'Aref Ruqaa', 'Cairo', sans-serif" font-size="33" font-weight="900" fill="#ffffff" text-anchor="middle">شاورما</text>
+                        <text x="120" y="132" font-family="'Aref Ruqaa', 'Cairo', sans-serif" font-size="29" font-weight="900" fill="#ffffff" text-anchor="middle">العربي</text>
+                        <path d="M107 140 L133 140 L120 150 Z" fill="#ffffff"/>
+                        <line x1="120" y1="150" x2="120" y2="163" stroke="#ffffff" stroke-width="3.5"/>
+                        <text x="120" y="186" font-family="'Aref Ruqaa', 'Cairo', sans-serif" font-size="22" font-weight="700" fill="#ffffff" text-anchor="middle">شاورما العربي</text>
+                        <text x="120" y="206" font-family="'Cairo', sans-serif" font-size="11.5" font-weight="800" letter-spacing="1.5" fill="#ffffff" text-anchor="middle">SHAWARMA AL-ARABY</text>
+                    </svg>
+                </div>
+
+                <div class="brand-text">
+                    <h1>شاورما العربي</h1>
+                    <span class="en-name">SHAWARMA AL-ARABY</span>
+                    <div class="slogan">طعم الشرق الأصيل ولذّة من أول لقمة 🌯</div>
+                </div>
+            </div>
+
+            <!-- معلومات المطعم والاتصال -->
+            <div class="info-pills">
+                <div class="info-pill">
+                    <i class="fa-regular fa-clock"></i>
+                    <span>10:00 صباحاً إلى 2:30 فجراً 🕙</span>
+                </div>
+                <div class="info-pill">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <span>الرمادي - قرب فلكة الفرسان 📍</span>
+                </div>
+                <a href="tel:07877090666" class="info-pill">
+                    <i class="fa-solid fa-phone-volume"></i>
+                    <span dir="ltr">07877090666</span>
+                </a>
+                <a href="https://instagram.com/shawrma_alaraby" target="_blank" class="info-pill">
+                    <i class="fa-brands fa-instagram"></i>
+                    <span dir="ltr">@shawrma_alaraby</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- شريط الأقسام التفاعلي والبحث الفوري -->
+    <div class="sticky-nav-wrapper">
+        <div class="nav-container">
+            <div class="search-box">
+                <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                <input type="text" id="searchInput" placeholder="ابحث عن وجبتك المفضلة (مثال: صاج، زنجر، ريزو، بركر...)">
+                <button type="button" class="clear-search" id="clearSearchBtn" onclick="clearSearch()">
+                    <i class="fa-solid fa-circle-xmark"></i>
+                </button>
+            </div>
+            <div class="categories-bar" id="categoriesBar"></div>
+        </div>
+    </div>
+
+    <!-- حاوية قائمة الطعام -->
+    <main class="menu-container" id="menuContainer"></main>
+
+    <div class="menu-container">
+        <div class="no-results" id="noResultsMsg">
+            <i class="fa-solid fa-utensils" style="font-size: 2.5rem; color: var(--primary-red); margin-bottom: 10px;"></i>
+            <h3>عذراً، لم نجد وجبة تطابق بحثك!</h3>
+            <p style="color: var(--text-gray); margin-top: 5px;">جرب البحث بكلمة أخرى أو تصفح الأقسام أعلاه.</p>
+        </div>
+    </div>
+
+    <!-- سلة المشتريات العائمة -->
+    <div class="floating-cart" id="floatingCart" onclick="openCartModal()">
+        <div class="cart-info-right">
+            <div class="cart-count-badge" id="floatingCartCount">0</div>
+            <span class="cart-label">عرض سلة الطلبات وإتمام الطلب <i class="fa-solid fa-basket-shopping"></i></span>
+        </div>
+        <div class="cart-total-left">
+            <span id="floatingCartTotal">0</span>
+            <small>د.ع</small>
+        </div>
+    </div>
+
+    <!-- نافذة إتمام الطلب (Cart Modal) -->
+    <div class="modal-overlay" id="cartModalOverlay" onclick="handleOverlayClick(event)">
+        <div class="cart-modal" onclick="event.stopPropagation()">
+            <div class="modal-header">
+                <h3><i class="fa-solid fa-receipt"></i> سلة الطلبات وإتمام الطلب</h3>
+                <button type="button" class="close-modal-btn" onclick="closeCartModal()">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <!-- قائمة الوجبات داخل السلة -->
+                <div class="cart-items-list" id="cartItemsList"></div>
+
+                <!-- اختيار نوع الطلب -->
+                <div>
+                    <label style="font-weight: 800; font-size: 0.9rem; display:block; margin-bottom: 8px;">اختر نوع الطلب:</label>
+                    <div class="order-type-selector">
+                        <div class="type-option active" id="typeDelivery" onclick="setOrderType('delivery')">
+                            <span class="emoji">🛵</span>
+                            <span>توصيل للمنزل</span>
+                        </div>
+                        <div class="type-option" id="typePickup" onclick="setOrderType('pickup')">
+                            <span class="emoji">🏪</span>
+                            <span>استلام من المطعم</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- حقول معلومات الزبون -->
+                <div class="checkout-form">
+                    <div class="form-group">
+                        <label for="custName">اسم الزبون *</label>
+                        <input type="text" id="custName" placeholder="اكتب اسمك الكريم هنا..." required>
+                    </div>
+                    <div class="form-group">
+                        <label for="custPhone">رقم الهاتف *</label>
+                        <input type="tel" id="custPhone" placeholder="078XXXXXXXX" dir="ltr" style="text-align: right;" required>
+                    </div>
+                    <div class="form-group" id="addressGroup">
+                        <label for="custAddress">العنوان التفصيلي (الرمادي - الحي - أقرب نقطة دالة) *</label>
+                        <input type="text" id="custAddress" placeholder="مثال: الرمادي - قرب فلكة الفرسان - مجاور...">
+                    </div>
+                    <div class="form-group">
+                        <label for="custNotes">ملاحظات إضافية على الطلب (اختياري)</label>
+                        <textarea id="custNotes" rows="2" placeholder="مثال: بدون مخلل، كثر ثوم، صوص إضافي..."></textarea>
+                    </div>
+                </div>
+
+                <!-- ملخص الفاتورة -->
+                <div class="bill-summary">
+                    <div class="bill-row">
+                        <span>عدد الوجبات:</span>
+                        <span id="summaryCount">0</span>
+                    </div>
+                    <div class="bill-row">
+                        <span>نوع الطلب:</span>
+                        <span id="summaryType">توصيل للمنزل 🛵</span>
+                    </div>
+                    <div class="bill-row total">
+                        <span>المجموع الكلي:</span>
+                        <span><span id="summaryTotal">0</span> د.ع</span>
+                    </div>
+                </div>
+
+                <!-- زر الإرسال عبر واتساب -->
+                <button type="button" class="whatsapp-submit-btn" onclick="sendOrderViaWhatsApp()">
+                    <i class="fa-brands fa-whatsapp" style="font-size: 1.4rem;"></i>
+                    <span>إرسال الطلب عبر واتساب</span>
+                </button>
+
+                <button type="button" class="clear-cart-btn" onclick="clearCart()">إفراغ السلة بالكامل</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- الفوتر -->
+    <footer>
+        <div class="footer-content">
+            <h2 style="font-family: 'Aref Ruqaa', serif; font-size: 2rem;">شاورما العربي | SHAWARMA AL-ARABY</h2>
+            <p>طعم الشرق الأصيل ولذّة من أول لقمة 🌯</p>
+            <p><i class="fa-solid fa-location-dot"></i> الرمادي - قرب فلكة الفرسان | <i class="fa-regular fa-clock"></i> 10:00 ص - 2:30 فجراً</p>
+            <div class="footer-socials">
+                <a href="https://wa.me/9647877090666" target="_blank" class="social-btn">
+                    <i class="fa-brands fa-whatsapp"></i> واتساب: 07877090666
+                </a>
+                <a href="https://instagram.com/shawrma_alaraby" target="_blank" class="social-btn">
+                    <i class="fa-brands fa-instagram"></i> @shawrma_alaraby
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // البيانات الكاملة لقائمة الطعام والأسعار
+        const menuData = [
+            {
+                id: "shawarma",
+                title: "قسم الشاورما",
+                icon: "fa-solid fa-utensils",
+                items: [
+                    { id: "sh1", name: "صاج دجاج", price: 2500, desc: "" },
+                    { id: "sh2", name: "فرنسي دجاج", price: 2500, desc: "" },
+                    { id: "sh3", name: "سندويش العربي", price: 2500, desc: "" },
+                    { id: "sh4", name: "فرنسي بالجبن", price: 3500, desc: "" },
+                    { id: "sh5", name: "وجبة عربي", price: 4000, desc: "" },
+                    { id: "sh6", name: "وجبة سلايدر", price: 4500, desc: "" },
+                    { id: "sh7", name: "وجبة العرب", price: 5000, desc: "" },
+                    { id: "sh8", name: "وجبة عربي دبل", price: 6000, desc: "" },
+                    { id: "sh9", name: "وجبة إيطالي", price: 6000, desc: "" },
+                    { id: "sh10", name: "وجبة اكسترا دبل", price: 8000, desc: "" },
+                    { id: "sh11", name: "وجبة تربل", price: 9000, desc: "" },
+                    { id: "sh12", name: "ربع كيلو شاورما", price: 7500, desc: "" },
+                    { id: "sh13", name: "نص كيلو شاورما", price: 15000, desc: "" }
+                ]
+            },
+            {
+                id: "beef-burger",
+                title: "قسم البركر لحم",
+                icon: "fa-solid fa-burger",
+                items: [
+                    { id: "bb1", name: "بركر لحم كلاسك", price: 5000, desc: "" },
+                    { id: "bb2", name: "بركر لحم بجبن", price: 5000, desc: "" },
+                    { id: "bb3", name: "بركر شيخ العرب", price: 6000, desc: "" }
+                ]
+            },
+            {
+                id: "chicken-burger",
+                title: "قسم البركر دجاج",
+                icon: "fa-solid fa-burger",
+                items: [
+                    { id: "cb1", name: "بركر دجاج كلاسك", price: 4000, desc: "" },
+                    { id: "cb2", name: "بركر دجاج بجبن", price: 4000, desc: "" },
+                    { id: "cb3", name: "بركر 76", price: 5000, desc: "" }
+                ]
+            },
+            {
+                id: "crunch-sandwich",
+                title: "قسم سندويش القرمشة",
+                icon: "fa-solid fa-hotdog",
+                items: [
+                    { id: "cs1", name: "زنجر", price: 4000, desc: "" },
+                    { id: "cs2", name: "مطافي", price: 4000, desc: "" },
+                    { id: "cs3", name: "فلر", price: 4000, desc: "" }
+                ]
+            },
+            {
+                id: "grill-sandwich",
+                title: "قسم سندويش الكرل",
+                icon: "fa-solid fa-fire-burner",
+                items: [
+                    { id: "gs1", name: "جكن مكسيكانو", price: 5000, desc: "سندويش + بطاطا + صوصات" },
+                    { id: "gs2", name: "جكن باربكيو", price: 5000, desc: "سندويش + بطاطا + صوصات" }
+                ]
+            },
+            {
+                id: "crunch-meals",
+                title: "قسم القرمشة",
+                icon: "fa-solid fa-drumstick-bite",
+                items: [
+                    { id: "cm1", name: "جكن تندر", price: 6000, desc: "4 قطع تندر + بطاطا + صوصات + صمون + بيبسي" },
+                    { id: "cm2", name: "جكن وينجز", price: 6000, desc: "6 قطع أجنحة + بطاطا + صوصات + صمون + بيبسي" }
+                ]
+            },
+            {
+                id: "rizzo",
+                title: "قسم الريزو",
+                icon: "fa-solid fa-bowl-rice",
+                items: [
+                    { id: "rz1", name: "ريزو كلاسك", price: 5000, desc: "" },
+                    { id: "rz2", name: "ريزو مدخن", price: 5000, desc: "" },
+                    { id: "rz3", name: "ريزو سبايسي", price: 5000, desc: "" },
+                    { id: "rz4", name: "ريزو شاورما", price: 5000, desc: "" }
+                ]
+            },
+            {
+                id: "fries",
+                title: "قسم الفنكر والفرايز",
+                icon: "fa-solid fa-pepper-hot",
+                items: [
+                    { id: "fr1", name: "قدح فنكر", price: 1000, desc: "" },
+                    { id: "fr2", name: "فنكر سادة", price: 2500, desc: "" },
+                    { id: "fr3", name: "فنكر بصوص", price: 3000, desc: "" },
+                    { id: "fr4", name: "فنكر بجبن", price: 3000, desc: "" },
+                    { id: "fr5", name: "جكن فرايز", price: 4000, desc: "" },
+                    { id: "fr6", name: "جلي فرايز", price: 4000, desc: "" },
+                    { id: "fr7", name: "سبشل فرايز", price: 4000, desc: "" }
+                ]
+            },
+            {
+                id: "drinks",
+                title: "قسم المشروبات",
+                icon: "fa-solid fa-wine-bottle",
+                items: [
+                    { id: "dr1", name: "بيبسي مكينة", price: 1000, desc: "" },
+                    { id: "dr2", name: "لبن", price: 500, desc: "" },
+                    { id: "dr3", name: "بيبسي", price: 500, desc: "" },
+                    { id: "dr4", name: "سفن", price: 500, desc: "" },
+                    { id: "dr5", name: "ديو", price: 500, desc: "" },
+                    { id: "dr6", name: "ميرندا", price: 500, desc: "" }
+                ]
+            }
+        ];
+
+        // حالة السلة ونوع الطلب
+        let cart = {};
+        let orderType = 'delivery'; // 'delivery' or 'pickup'
+        const RESTAURANT_WA = "9647877090666";
+
+        // تنسيق الأرقام بالدينار العراقي (فواصل الآلاف)
+        function formatPrice(num) {
+            return Number(num).toLocaleString('en-US');
+        }
+
+        // بناء شريط الأقسام والوجبات عند تحميل الصفحة
+        function initApp() {
+            renderCategoriesBar();
+            renderMenu();
+            setupScrollSpy();
+        }
+
+        // توليد شريط الأقسام العلوي
+        function renderCategoriesBar() {
+            const bar = document.getElementById('categoriesBar');
+            bar.innerHTML = menuData.map((cat, idx) => `
+                <a href="#${cat.id}" class="cat-item ${idx === 0 ? 'active' : ''}" data-cat="${cat.id}">
+                    <span class="cat-icon"><i class="${cat.icon}"></i></span>
+                    <span>${cat.title.replace('قسم ', '')}</span>
+                </a>
+            `).join('');
+        }
+
+        // توليد أقسام وبطاقات المنيو
+        function renderMenu(filterText = '') {
+            const container = document.getElementById('menuContainer');
+            const query = filterText.trim().toLowerCase();
+            let totalVisibleItems = 0;
+
+            container.innerHTML = menuData.map(cat => {
+                const filteredItems = cat.items.filter(item =>
+                    item.name.toLowerCase().includes(query) ||
+                    (item.desc && item.desc.toLowerCase().includes(query)) ||
+                    cat.title.toLowerCase().includes(query)
+                );
+
+                if (filteredItems.length === 0) return '';
+                totalVisibleItems += filteredItems.length;
+
+                return `
+                    <section class="menu-section" id="${cat.id}">
+                        <div class="section-header-wrapper">
+                            <div class="section-banner">
+                                <h2><i class="${cat.icon}"></i> ${cat.title}</h2>
+                            </div>
+                        </div>
+                        <div class="meals-grid">
+                            ${filteredItems.map(item => {
+                                const qty = cart[item.id] ? cart[item.id].qty : 0;
+                                return `
+                                    <div class="meal-card ${qty > 0 ? 'in-cart' : ''}" id="card-${item.id}">
+                                        <div class="meal-info">
+                                            <div>
+                                                <div class="meal-title">${item.name}</div>
+                                                ${item.desc ? `<div class="meal-desc">${item.desc}</div>` : ''}
+                                            </div>
+                                            <div class="meal-icon-badge">
+                                                <i class="${cat.icon}"></i>
+                                            </div>
+                                        </div>
+                                        <div class="meal-footer">
+                                            <div class="meal-price">${formatPrice(item.price)} <span>د.ع</span></div>
+                                            <div class="qty-controls">
+                                                <button type="button" class="qty-btn plus" onclick="changeQty('${item.id}', 1)" aria-label="إضافة">
+                                                    <i class="fa-solid fa-plus"></i>
+                                                </button>
+                                                <span class="qty-number" id="qty-${item.id}">${qty}</span>
+                                                <button type="button" class="qty-btn minus" id="minus-${item.id}" onclick="changeQty('${item.id}', -1)" ${qty === 0 ? 'disabled' : ''} aria-label="إنقاص">
+                                                    <i class="fa-solid fa-minus"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                `;
+                            }).join('')}
+                        </div>
+                    </section>
+                `;
+            }).join('');
+
+            document.getElementById('noResultsMsg').style.display = totalVisibleItems === 0 ? 'block' : 'none';
+        }
+
+        // البحث عن وجبة بالمعرف
+        function findMealById(itemId) {
+            for (const cat of menuData) {
+                const found = cat.items.find(i => i.id === itemId);
+                if (found) return found;
+            }
+            return null;
+        }
+
+        // تعديل الكمية (+ أو -)
+        function changeQty(itemId, delta) {
+            const meal = findMealById(itemId);
+            if (!meal) return;
+
+            if (!cart[itemId]) {
+                cart[itemId] = { ...meal, qty: 0 };
+            }
+
+            cart[itemId].qty += delta;
+
+            if (cart[itemId].qty <= 0) {
+                delete cart[itemId];
+            }
+
+            updateCardUI(itemId);
+            updateCartUI();
+        }
+
+        // تحديث شكل البطاقة بعد تغيير الكمية (تم تصحيح المتغير إلى itemId)
+        function updateCardUI(itemId) {
+            const qty = cart[itemId] ? cart[itemId].qty : 0;
+            const qtyEl = document.getElementById(`qty-${itemId}`);
+            const minusBtn = document.getElementById(`minus-${itemId}`);
+            const cardEl = document.getElementById(`card-${itemId}`);
+
+            if (qtyEl) qtyEl.textContent = qty;
+            if (minusBtn) minusBtn.disabled = qty === 0;
+            if (cardEl) {
+                if (qty > 0) cardEl.classList.add('in-cart');
+                else cardEl.classList.remove('in-cart');
+            }
+        }
+
+        // تحديث السلة العائمة والنافذة المنبثقة
+        function updateCartUI() {
+            const items = Object.values(cart);
+            const totalCount = items.reduce((sum, item) => sum + item.qty, 0);
+            const totalPrice = items.reduce((sum, item) => sum + (item.price * item.qty), 0);
+
+            // السلة العائمة أسفل الشاشة
+            const floatingCart = document.getElementById('floatingCart');
+            document.getElementById('floatingCartCount').textContent = totalCount;
+            document.getElementById('floatingCartTotal').textContent = formatPrice(totalPrice);
+
+            if (totalCount > 0) {
+                floatingCart.classList.add('visible');
+            } else {
+                floatingCart.classList.remove('visible');
+                closeCartModal();
+            }
+
+            // قائمة العناصر داخل نافذة السلة
+            const listEl = document.getElementById('cartItemsList');
+            if (items.length === 0) {
+                listEl.innerHTML = `<p style="text-align:center; color:#777;">السلة فارغة حالياً</p>`;
+            } else {
+                listEl.innerHTML = items.map(item => `
+                    <div class="cart-item-row">
+                        <div class="cart-item-info">
+                            <div class="cart-item-title">${item.name}</div>
+                            <div class="cart-item-subtotal">${formatPrice(item.price)} × ${item.qty} = ${formatPrice(item.price * item.qty)} د.ع</div>
+                        </div>
+                        <div class="qty-controls">
+                            <button type="button" class="qty-btn plus" onclick="changeQty('${item.id}', 1)">
+                                <i class="fa-solid fa-plus"></i>
+                            </button>
+                            <span class="qty-number">${item.qty}</span>
+                            <button type="button" class="qty-btn minus" onclick="changeQty('${item.id}', -1)">
+                                <i class="fa-solid fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            // ملخص الفاتورة
+            document.getElementById('summaryCount').textContent = `${totalCount} وجبة`;
+            document.getElementById('summaryTotal').textContent = formatPrice(totalPrice);
+        }
+
+        // فتح وإغلاق نافذة السلة
+        function openCartModal() {
+            if (Object.keys(cart).length === 0) return;
+            document.getElementById('cartModalOverlay').classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeCartModal() {
+            document.getElementById('cartModalOverlay').classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        function handleOverlayClick(e) {
+            if (e.target.id === 'cartModalOverlay') {
+                closeCartModal();
+            }
+        }
+
+        // تبديل نوع الطلب (توصيل / استلام من المطعم)
+        function setOrderType(type) {
+            orderType = type;
+            const btnDelivery = document.getElementById('typeDelivery');
+            const btnPickup = document.getElementById('typePickup');
+            const addressGroup = document.getElementById('addressGroup');
+            const summaryType = document.getElementById('summaryType');
+
+            if (type === 'delivery') {
+                btnDelivery.classList.add('active');
+                btnPickup.classList.remove('active');
+                addressGroup.style.display = 'flex';
+                summaryType.textContent = 'توصيل للمنزل 🛵';
+            } else {
+                btnPickup.classList.add('active');
+                btnDelivery.classList.remove('active');
+                addressGroup.style.display = 'none';
+                summaryType.textContent = 'استلام من المطعم 🏪';
+            }
+        }
+
+        // إفراغ السلة
+        function clearCart() {
+            cart = {};
+            renderMenu(document.getElementById('searchInput').value);
+            updateCartUI();
+        }
+
+        // إرسال الطلب عبر واتساب
+        function sendOrderViaWhatsApp() {
+            const items = Object.values(cart);
+            if (items.length === 0) return;
+
+            const name = document.getElementById('custName').value.trim();
+            const phone = document.getElementById('custPhone').value.trim();
+            const address = document.getElementById('custAddress').value.trim();
+            const notes = document.getElementById('custNotes').value.trim();
+
+            if (!name) {
+                alert('يرجى إدخال اسم الزبون الكريم.');
+                document.getElementById('custName').focus();
+                return;
+            }
+            if (!phone) {
+                alert('يرجى إدخال رقم الهاتف للتواصل.');
+                document.getElementById('custPhone').focus();
+                return;
+            }
+            if (orderType === 'delivery' && !address) {
+                alert('يرجى إدخال العنوان التفصيلي لتوصيل الطلب.');
+                document.getElementById('custAddress').focus();
+                return;
+            }
+
+            const totalPrice = items.reduce((sum, item) => sum + (item.price * item.qty), 0);
+            const orderTypeText = orderType === 'delivery' ? 'توصيل للمنزل 🛵' : 'استلام من المطعم 🏪';
+
+            let msg = `🌯 *طلب جديد - مطعم شاورما العربي* 🌯\n`;
+            msg += `━━━━━━━━━━━━━━━━━━\n`;
+            msg += `👤 *الاسم:* ${name}\n`;
+            msg += `📞 *الهاتف:* ${phone}\n`;
+            msg += `📦 *نوع الطلب:* ${orderTypeText}\n`;
+            if (orderType === 'delivery') {
+                msg += `📍 *العنوان:* ${address}\n`;
+            }
+            if (notes) {
+                msg += `📝 *ملاحظات:* ${notes}\n`;
+            }
+            msg += `━━━━━━━━━━━━━━━━━━\n`;
+            msg += `🧾 *تفاصيل الفاتورة:*\n`;
+
+            items.forEach((item, index) => {
+                msg += `${index + 1}. *${item.name}* (العدد: ${item.qty}) ⬅️ ${formatPrice(item.price * item.qty)} د.ع\n`;
+            });
+
+            msg += `━━━━━━━━━━━━━━━━━━\n`;
+            msg += `💰 *المجموع الكلي:* *${formatPrice(totalPrice)} د.ع*\n`;
+            msg += `━━━━━━━━━━━━━━━━━━\n`;
+            msg += `شكراً لاختياركم شاورما العربي 🌹`;
+
+            const waUrl = `https://wa.me/${RESTAURANT_WA}?text=${encodeURIComponent(msg)}`;
+            window.open(waUrl, '_blank');
+        }
+
+        // البحث الفوري (Live Search)
+        const searchInput = document.getElementById('searchInput');
+        const clearSearchBtn = document.getElementById('clearSearchBtn');
+
+        searchInput.addEventListener('input', (e) => {
+            const val = e.target.value;
+            clearSearchBtn.style.display = val.length > 0 ? 'block' : 'none';
+            renderMenu(val);
+        });
+
+        function clearSearch() {
+            searchInput.value = '';
+            clearSearchBtn.style.display = 'none';
+            renderMenu('');
+        }
+
+        // تفعيل القسم النشط أثناء التمرير
+        function setupScrollSpy() {
+            window.addEventListener('scroll', () => {
+                const sections = document.querySelectorAll('.menu-section');
+                const navLinks = document.querySelectorAll('.cat-item');
+                let currentId = '';
+
+                sections.forEach(sec => {
+                    const top = sec.offsetTop - 190;
+                    if (window.scrollY >= top) {
+                        currentId = sec.getAttribute('id');
+                    }
+                });
+
+                if (currentId) {
+                    navLinks.forEach(link => {
+                        link.classList.toggle('active', link.getAttribute('data-cat') === currentId);
+                    });
+                }
+            });
+        }
+
+        window.addEventListener('DOMContentLoaded', initApp);
+    </script>
+</body>
+</html>
